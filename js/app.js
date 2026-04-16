@@ -148,6 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setClearColor(0x000000, 0);
+        
+        // Enable clipping for cross-section tool
+        renderer.localClippingEnabled = true;
+        renderer.clippingPlanes = [new THREE.Plane(new THREE.Vector3(0, -1, 0), 10)];
+        
         threeContainer.appendChild(renderer.domElement);
 
         // Lighting
